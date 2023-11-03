@@ -3,28 +3,24 @@ title: "About Me"
 sidebar: false 
 ---
 
-# Education
+## Education
 
--   B.S., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
+-   BSc, Industrial Engineering, Hacettepe University, *Turkey,*
 
-# Work Experience
+    *August 2020 - ongoing.*
 
-## Employements
+## Work Experience
 
-1.  Firm xxx, position xx, year xxx
+-   Polat Makina, OPEX Intern, Turkey,
 
-2.  Firm yyy, position yyy, year yyy
+    *July 2023 - August 2023*
 
-## Internships
+## Competencies
 
-1.  Firm aaa, position xx, year xxx
+Python, R, Quarto, Git, MATLAB, Minitab, Arena, MS Office
 
-2.  Firm bbb, position yyy, year yyy
+## Hobbies
 
-# Projects
+-   Speedcubing
 
-# Competencies
-
-R, Quarto, Git, Python
-
-# Hobbies
+-   Mobile Photography

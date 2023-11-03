@@ -1,10 +1,10 @@
 ---
 title: "Welcome to My Analytics Lab"
-sidebar: false 
+sidebar: false
 ---
 
-Hello! My name is Beyzanur Nas.
+Hello, I am glad you are here!
 
-This is my personal webpage.
+My name is Beyzanur Nas and this is my personal webpage.
 
 Please stay tuned to follow my works on data analytics, blog posts, and more.

@@ -1,15 +1,44 @@
 ---
-title: "Assignment 1"
+# title: "Assignment 1"
 ---
 
 # Assignment 1
 
-```{r}
-1 + 1
-```
+## (a) 
 
-My first assignment has two parts.
+### Video : [*Tom Mock \| Quarto for the Curious \| RStudio (2022)*](https://www.youtube.com/watch?v=mrvhk2XUfWo)
 
-## (a)
+### Summary:
+
+............................
 
 ## (b)
+
+1\.
+
+2\.
+
+3\.
+
+## (c)
+
+```{r}
+library(dslabs)
+data(na_example)
+print(na_example)
+```
+
+```{r}
+sum(is.na(na_example))
+print(sum(is.na(na_example)))
+```
+
+```{r}
+no_nas <- ifelse(is.na(na_example), 0, na_example)
+print(no_nas <- ifelse(is.na(na_example), 0, na_example))
+```
+
+```{r}
+sum(is.na(no_nas))
+print(sum(is.na(no_nas)))
+```
