@@ -27,8 +27,7 @@ website:
       #  href: https://twitter.com
       - icon: linkedin
         href: https://tr.linkedin.com/in/beyzanur-nas-ba2955232
-      - icon: e-mail
-        href: https://github.com/beyzanurnas
+
 
   sidebar:
     - title: "Assignments"
