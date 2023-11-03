@@ -16,11 +16,58 @@ Tableau is an excellent data visualization tool but it is often the case that us
 
 # (b)
 
-1\.
+1.   **Indexing**
 
-2\.
+    Indices in R is as follows: 1, 2, 3,.....
 
-3\.
+    Whereas indices in Python is as follows: 0, 1, 2,...
+
+    This difference comes from the fact that R is not developed by computer scientist like other languages including Python. In computer science it is common for people to easily say that the first element of an array has the index of 0.
+
+    ```{python}
+    # in Python x[1] gives the second element of list x, 2
+
+    x = [1, 2, 3, 4, 5, 6, 7]
+    print(x[1])
+
+    ```
+
+    ```{r}
+    # in R x[1] gives the first element of vector x, 1
+
+    x <- c(1, 2, 3, 4, 5, 6, 7)  
+    print(x[1])
+
+
+    ```
+
+2.   **Slicing**
+
+    ```{python}
+    # when slicing in Python upper range argument index is excluded therefore x[3:5] gives the 4th and 5th elements (indices 3 and 4)
+
+    x = [1, 2, 3, 4, 5, 6, 7]
+    print(x[3:5])
+    ```
+
+    ```{r}
+    # In R x[3:5] gives 3, 4, 5
+
+    x <- c(1, 2, 3, 4, 5, 6, 7)  
+    print(x[3:5])
+
+
+    ```
+
+    3.  **Coercion**
+
+        With R, when an entry does not match the expected, R tries to guess what we meant before throwing in an error.
+
+    ```{r}
+    x <- c(1, "Canada", 3)
+    print(x)
+    class(x)
+    ```
 
 # (c)
 
