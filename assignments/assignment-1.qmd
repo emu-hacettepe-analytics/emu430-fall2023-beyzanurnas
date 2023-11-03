@@ -4,15 +4,17 @@
 
 # Assignment 1
 
-## (a) 
+# (a)
 
-### Video : [*Tom Mock \| Quarto for the Curious \| RStudio (2022)*](https://www.youtube.com/watch?v=mrvhk2XUfWo)
+#### Video : 
 
-### Summary:
+#### [*R, Python, and Tableau: A Love Triangle*](https://www.rstudio.com/conference/2022/talks/r-python-tableau-love-triangle/)
 
-............................
+#### Summary:
 
-## (b)
+Tableau is an excellent data visualization tool but it is often the case that users want to access more advanced analytic capabilities in their Tableau dashboard. In this video we get an example on how new open-source packages enable R, Python, Tableau and RStudio Connect to work together.
+
+# (b)
 
 1\.
 
@@ -20,25 +22,33 @@
 
 3\.
 
-## (c)
+# (c)
 
 ```{r}
+# import the necessary data from related library
+
 library(dslabs)
 data(na_example)
 print(na_example)
 ```
 
 ```{r}
-sum(is.na(na_example))
-print(sum(is.na(na_example)))
+# is.na(na_example) will return the value 1 for every NA observation and 0 o.w.
+
+sum(is.na(na_example))  
 ```
 
 ```{r}
+# assign 0 to NA values
+
 no_nas <- ifelse(is.na(na_example), 0, na_example)
 print(no_nas <- ifelse(is.na(na_example), 0, na_example))
+
 ```
 
 ```{r}
+# count NA oobservations again
+
 sum(is.na(no_nas))
-print(sum(is.na(no_nas)))
+
 ```
