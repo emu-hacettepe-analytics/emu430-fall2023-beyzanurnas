@@ -1,16 +1,17 @@
 ---
 # title: "Assignment 1"
+
 ---
 
 # Assignment 1
 
 # (a)
 
-#### Video : 
+## Video : 
 
-#### [*R, Python, and Tableau: A Love Triangle*](https://www.rstudio.com/conference/2022/talks/r-python-tableau-love-triangle/)
+[*R, Python, and Tableau: A Love Triangle*](https://www.rstudio.com/conference/2022/talks/r-python-tableau-love-triangle/)
 
-#### Summary:
+## Summary:
 
 Tableau is an excellent data visualization tool but it is often the case that users want to access more advanced analytic capabilities in their Tableau dashboard. In this video we get an example on how new open-source packages enable R, Python, Tableau and RStudio Connect to work together.
 
@@ -50,14 +51,14 @@ Tableau is an excellent data visualization tool but it is often the case that us
     print(x[3:5])
     ```
 
-    ```{r}
+    {r}
     # In R x[3:5] gives 3, 4, 5
 
     x <- c(1, 2, 3, 4, 5, 6, 7)  
     print(x[3:5])
 
 
-    ```
+    
 
     3.  **Coercion**
 

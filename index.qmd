@@ -1,5 +1,5 @@
 ---
-title: "Welcome to My Analytics Lab"
+title: "Welcome to Beyzanur Nas's Analytics Lab"
 sidebar: false
 ---
 

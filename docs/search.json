@@ -9,7 +9,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Welcome to My Analytics Lab",
+    "title": "Welcome to Beyzanur Nas’s Analytics Lab",
     "section": "",
     "text": "Hello, I am glad you are here!\nMy name is Beyzanur Nas and this is my personal webpage.\nPlease stay tuned to follow my works on data analytics, blog posts, and more.\n\n\n\n Back to top"
   },
@@ -117,5 +117,19 @@
     "title": "About Me",
     "section": "CV",
     "text": "CV"
+  },
+  {
+    "objectID": "assignments/assignment-1.html#video",
+    "href": "assignments/assignment-1.html#video",
+    "title": "Assignment 1",
+    "section": "Video :",
+    "text": "Video :\nR, Python, and Tableau: A Love Triangle"
+  },
+  {
+    "objectID": "assignments/assignment-1.html#summary",
+    "href": "assignments/assignment-1.html#summary",
+    "title": "Assignment 1",
+    "section": "Summary:",
+    "text": "Summary:\nTableau is an excellent data visualization tool but it is often the case that users want to access more advanced analytic capabilities in their Tableau dashboard. In this video we get an example on how new open-source packages enable R, Python, Tableau and RStudio Connect to work together."
   }
 ]
