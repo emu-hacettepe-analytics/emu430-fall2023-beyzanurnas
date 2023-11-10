@@ -3,7 +3,7 @@
 title: "EMU 430 23/24 FALL - Assignment 1"
 
 ---
-# EMU 430 23/24 FALL - Assignment 1
+
 
 
 # (a)
