@@ -1,14 +1,10 @@
 ---
-
-title: "EMU 430 23/24 FALL - Assignment 1"
-
+title: "Assignment 1"
 ---
-
-
 
 # (a)
 
-## Video : 
+## Video :
 
 [*R, Python, and Tableau: A Love Triangle*](https://www.rstudio.com/conference/2022/talks/r-python-tableau-love-triangle/)
 
@@ -18,58 +14,55 @@ Tableau is an excellent data visualization tool but it is often the case that us
 
 # (b)
 
-1.   **Indexing**
+1.  **Indexing**
 
-    Indices in R is as follows: 1, 2, 3,.....
+Indices in R is as follows: 1, 2, 3,.....
 
-    Whereas indices in Python is as follows: 0, 1, 2,...
+Whereas indices in Python is as follows: 0, 1, 2,...
 
-    This difference comes from the fact that R is not developed by computer scientist like other languages including Python. In computer science it is common for people to easily say that the first element of an array has the index of 0.
+This difference comes from the fact that R is not developed by computer scientist like other languages including Python. In computer science it is common for people to easily say that the first element of an array has the index of 0.
 
-    ```{python}
-    # in Python x[1] gives the second element of list x, 2
+```{python}
+# in Python x[1] gives the second element of list x, 2
 
-    x = [1, 2, 3, 4, 5, 6, 7]
-    print(x[1])
-
-    ```
-
-    ```{r}
-    # in R x[1] gives the first element of vector x, 1
-
-    x <- c(1, 2, 3, 4, 5, 6, 7)  
-    print(x[1])
+x = [1, 2, 3, 4, 5, 6, 7]
+print(x[1])
+```
 
 
-    ```
 
-2.   **Slicing**
-
-    ```{python}
-    # when slicing in Python upper range argument index is excluded therefore x[3:5] gives the 4th and 5th elements (indices 3 and 4)
-
-    x = [1, 2, 3, 4, 5, 6, 7]
-    print(x[3:5])
-    ```
-
-    {r}
-    # In R x[3:5] gives 3, 4, 5
-
-    x <- c(1, 2, 3, 4, 5, 6, 7)  
-    print(x[3:5])
+```{r}
+# in R x[1] gives the first element of vector x, 1
+x <- c(1, 2, 3, 4, 5, 6, 7)  
+print(x[1])
+```
 
 
-    
+2.  **Slicing**
 
-    3.  **Coercion**
+```{python}
+# when slicing in Python upper range argument index is excluded therefore x[3:5] gives the 4th and 5th elements (indices 3 and 4)
 
-        With R, when an entry does not match the expected, R tries to guess what we meant before throwing in an error.
+x = [1, 2, 3, 4, 5, 6, 7]
+print(x[3:5])
+```
 
-    ```{r}
-    x <- c(1, "Canada", 3)
-    print(x)
-    class(x)
-    ```
+```{r}
+# In R x[3:5] gives 3, 4, 5
+
+x <- c(1, 2, 3, 4, 5, 6, 7)  
+print(x[3:5])
+```
+
+3.  **Coercion**
+
+With R, when an entry does not match the expected, R tries to guess what we meant before throwing in an error.
+
+```{r}
+x <- c(1, "Canada", 3)
+print(x)
+class(x)
+```
 
 # (c)
 
@@ -91,7 +84,7 @@ sum(is.na(na_example))
 # assign 0 to NA values
 
 no_nas <- ifelse(is.na(na_example), 0, na_example)
-print(no_nas <- ifelse(is.na(na_example), 0, na_example))
+print(no_nas)
 
 ```
 
