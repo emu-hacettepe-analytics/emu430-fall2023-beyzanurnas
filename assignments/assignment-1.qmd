@@ -2,19 +2,19 @@
 title: "Assignment 1"
 ---
 
-# (a)
+# Part (a)
 
-## Video :
+**Video:**
 
 [*R, Python, and Tableau: A Love Triangle*](https://www.rstudio.com/conference/2022/talks/r-python-tableau-love-triangle/)
 
-## Summary:
+**Summary:**
 
 Tableau is an excellent data visualization tool but it is often the case that users want to access more advanced analytic capabilities in their Tableau dashboard. In this video we get an example on how new open-source packages enable R, Python, Tableau and RStudio Connect to work together.
 
-# (b)
+# Part (b)
 
-1.  **Indexing**
+1.**Indexing**
 
 Indices in R is as follows: 1, 2, 3,.....
 
@@ -38,7 +38,7 @@ print(x[1])
 ```
 
 
-2.  **Slicing**
+2.**Slicing**
 
 ```{python}
 # when slicing in Python upper range argument index is excluded therefore x[3:5] gives the 4th and 5th elements (indices 3 and 4)
@@ -54,7 +54,7 @@ x <- c(1, 2, 3, 4, 5, 6, 7)
 print(x[3:5])
 ```
 
-3.  **Coercion**
+3.**Coercion**
 
 With R, when an entry does not match the expected, R tries to guess what we meant before throwing in an error.
 
@@ -64,7 +64,7 @@ print(x)
 class(x)
 ```
 
-# (c)
+# Part (c)
 
 ```{r}
 # import the necessary data from related library
