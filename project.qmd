@@ -3,10 +3,10 @@ title: "Our Course Project"
 sidebar: false 
 ---
 
-I'm honored to be a member of the \[group name\] project team.
+I'm honored to be a member of the *Data**Viz**ards* project team.
 
-Below, you'll find a brief summary of our project. To access a detailed project description, please go to [https://\[your-project-url\]](#0){.uri}.
+Below, you'll find a brief summary of our project. To access a detailed project description, please go to [our project's webpage](https://emu-hacettepe-analytics.github.io/emu430-fall2023-team-data_vizards/).
 
 **Summary**
 
-\[provide a biref summary of your project\]
+In scope of our project, we are conducting a data analytics study on Turkiye's internal migration data. Our dataset contains data on internal migration across cities, age groups and genders of migrants, migration due to different reasons and other relevant data. We are planning to look for relationships of different parts of data. And finally we want to conclude our work by understanding migration trends in Turkiye.
