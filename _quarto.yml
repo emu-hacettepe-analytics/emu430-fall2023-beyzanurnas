@@ -47,7 +47,7 @@ format:
     toc: true
     toc-location: left
     theme: 
-      light: cosmo 
+      light: sandstone 
       dark: slate
     css: styles.css
 
