@@ -1,6 +1,6 @@
 ---
 title: "Our Course Project"
-sidebar: false 
+sidebar: 
 ---
 
 I'm honored to be a member of the *Data**Viz**ards* project team.
