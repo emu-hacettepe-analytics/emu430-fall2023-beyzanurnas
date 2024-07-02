@@ -12,7 +12,21 @@ website:
       - text: About Me
         href: about.qmd
       - text: My Posts
-        href: posts.qmd
+        menu: 
+          - text: POSTS
+            href: posts.qmd
+          - text: ?Set Covering
+            href: msc.qmd
+          - text: Vehicle Routing Problem
+            href: vrp.qmd
+          - text: Traveling Salesman Problem
+            href: tsp.qmd
+          - text: Oil Blending
+            href: blending.qmd
+          - text: Allocation
+            href: allocation.qmd
+          - text: Linear Separator
+            href: linsep.qmd
       - text: "EMU430 Coursework"
         menu:
           - text: Assignments
@@ -30,13 +44,20 @@ website:
 
 
   sidebar:
-    - title: "Assignments"
+    - title: "Assign..."
       style: "docked"
       search: true
       contents:
-        - assignments.qmd
-        - assignments/assignment-1.qmd
-        - assignments/assignment-2.qmd  
+        #- assignments.qmd
+        #- assignments/assignment-1.qmd
+        #- assignments/assignment-2.qmd  
+        - posts.qmd
+        - msc.qmd
+        - vrp.qmd
+        - tsp.qmd
+        - blending.qmd
+        - allocation.qmd
+        - linsep.qmd
   page-navigation: true
   back-to-top-navigation: true
   page-footer:

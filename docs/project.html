@@ -91,10 +91,25 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About Me</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./posts.html" rel="" target="">
- <span class="menu-text">My Posts</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-my-posts" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">My Posts</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-my-posts">    
+        <li>
+    <a class="dropdown-item" href="./posts.html" rel="" target="">
+ <span class="dropdown-text">POSTS</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./msc.html" rel="" target="">
+ <span class="dropdown-text">Minimum Set Cover</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cvx.html" rel="" target="">
+ <span class="dropdown-text">CVXPY</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-emu430-coursework" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">EMU430 Coursework</span>
@@ -160,6 +175,24 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./assignments/assignment-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignment 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">My Blog</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./msc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MinimumSetCover</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cvx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">cvx</span></a>
   </div>
 </li>
     </ul>

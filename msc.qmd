@@ -1,0 +1,97 @@
+---
+title: "?Set Covering"
+execute:
+  eval: true
+sidebar: false
+---
+
+## Minimum Set Cover
+
+### Problem
+
+Minimum number of facilities with coverage distance Dmax, co-located with demand points, to serve all demand points.
+
+$$
+\begin{split} 
+\begin{align}
+&N: \text{number of demand points} \\ 
+&d_{ij}: \text{euclidian distance between locations i and j} \\
+&y_{j}: 1, \text{if a facility is opened at location j} \\
+&x_{ij} : 1, \text{if node i is served by facility at j} \\
+\end{align}
+\end{split} 
+$$
+
+$$
+\begin{split} 
+\begin{align}
+&\text{minimize} \sum_{j \epsilon N} y_{j} \\
+&\text{st} \\ 
+&\sum_{j \epsilon N} x_{ij} = 1 \qquad \qquad \qquad\ \ \forall  i \epsilon N \\
+&y_{j} \ge x_{ij} \qquad \qquad \qquad \qquad \forall  i \epsilon N, j \epsilon N \\
+&\sum_{j \epsilon N} x_{ij}d_{ij} \le Dmax \qquad \quad\ \forall  i \epsilon N\\
+& x_{ij}, y_{j} \; \epsilon \; \{0,1\} \qquad \qquad \qquad \forall i \epsilon N, j \epsilon N \\
+\end{align}
+\end{split}
+$$
+
+```{python}
+
+import pandas as pd
+import numpy as np
+import gurobipy as gp
+from gurobipy import GRB
+import matplotlib.pyplot as plt
+from scipy.spatial.distance import cdist
+
+nLocs = pd.read_excel('NodeLocations.xlsx', sheet_name = 'MoleStNicholas').to_numpy()
+N = len(nLocs)
+d = cdist(nLocs, nLocs)
+Dmax = 100
+
+for i in range(N):
+    plt.scatter(nLocs[i][0], nLocs[i][1], color = 'black', s = 2)
+```
+
+```{python}
+#model
+model = gp.Model('MinSetCover-1')
+
+#dvar
+x = model.addVars(N,N, vtype = gp.GRB.BINARY, name = 'x')
+y = model.addVars(N, vtype = gp.GRB.BINARY, name = 'y')
+
+#obj
+model.setObjective(gp.quicksum(y[i] for i in range(N)), GRB.MINIMIZE)
+
+#constr
+for i in range(N):
+    model.addConstr(gp.quicksum(x[i,j] for j in range(N)) == 1)
+    
+for i in range(N):
+    for j in range(N):
+        model.addConstr(x[i,j] <= y[j])
+        
+for i in range(N):
+    model.addConstr(gp.quicksum(x[i,j]*d[i,j] for j in range(N)) <= Dmax)
+
+    
+model.setParam('TimeLimit', 120)
+#model.write('MinSetCover.lp')
+model.optimize()
+```
+
+```{python}
+
+fig,ax = plt.subplots(figsize=(10,10))
+ax = plt.gca()
+ax.set_aspect('equal')
+for i in range(N):
+    if y[i].x > 0.9:
+        ax.scatter(nLocs[i][0], nLocs[i][1], color = 'black', s = 2)
+        circle = plt.Circle([nLocs[i][0], nLocs[i][1]], Dmax, color = 'blue', fill = False)
+        ax.add_artist(circle)
+    else:
+        ax.scatter(nLocs[i][0], nLocs[i][1], color = 'red', s = 2)
+
+```

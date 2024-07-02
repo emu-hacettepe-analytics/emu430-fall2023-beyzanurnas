@@ -1,6 +1,8 @@
 ---
 title: "My Blog"
-sidebar: false 
+sidebar: true 
 ---
 
-This page is under construction.
+![](images/optim-tsp-01.gif)
+
+This page is under *construction.*

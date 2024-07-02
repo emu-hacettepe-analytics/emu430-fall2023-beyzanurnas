@@ -1,0 +1,7 @@
+---
+title: "Linear Separator"
+format: html
+editor: visual
+---
+
+more to come...

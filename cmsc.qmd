@@ -1,0 +1,40 @@
+---
+title: "cvx"
+sidebar: true
+---
+
+## tsp
+
+```{python}
+
+import cvxpy as cp
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(1)
+m = 100
+points = [(5*np.random.rand(), 5*np.random.rand()) for i in range(m)] # 3 std, 5std ???
+
+
+```
+
+```{python}
+# variable declatation
+x = cp.Variable((2,1))
+r = cp.Variable(1)
+
+# objective definition
+obj = cp.Minimize(r)
+
+# constr
+constraints = [cp.norm(x - [points[i]]) <= r for i in range(m)]
+
+# contruct prob
+problem = cp.Problem(obj, constraints)
+
+# solve & report
+print(problem.solve())
+print(problem.status)
+print(problem.solver_stats.solve_time)
+print(x.value) # center loc
+```

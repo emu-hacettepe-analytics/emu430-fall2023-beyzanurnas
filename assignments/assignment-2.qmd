@@ -2,28 +2,5 @@
 title: "Assignment 2"
 ---
 
-# Assignment 2
-
 Web Scraping
-```{r}
-library(tidyverse) # for everything :)
-library(rvest) # for HTML scraping
-library(stringr) # for string processing
 
-url_23 <- "https://m.imdb.com/search/title/?title_type=feature&release_date=2010-01-01,2023-12-31&num_votes=2500,&country_of_origin=TR&count=250"
-url_10 <- "https://m.imdb.com/search/title/?title_type=feature&release_date=,2009-12-31&num_votes=2500,&country_of_origin=TR&count=250"
-
-urls <- c(url_23, url_10)
-
-for (url in urls) {
-  
-  data_html <- read_html(url)
-  title_names <- data_html |> html_nodes(".ipc-title__text") |> html_text()
-  title_names <- tail(head(title_names,-1),-1)
-  title_names <- str_split(title_names, " ", n=2)
-  title_names <- unlist(lapply(title_names, function(x) {x[2]}))
-  
-}
-```
-...
-to be cont.

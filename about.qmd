@@ -5,23 +5,33 @@ sidebar: false
 
 ## Education
 
--   BSc, Industrial Engineering, Hacettepe University, *Turkey,*
-
-    *August 2020 - ongoing.*
++:--------------------------------------------------:+-----------------------------------------------------------------------------------------------+
+| ![](images/hü-logo-03.png){width="47" height="70"} | -   BSc, Industrial Engineering, Hacettepe University, *Turkey .*                             |
+|                                                    |                                                                                               |
+|                                                    |     *August 2020 - ongoing.*                                                                  |
++----------------------------------------------------+-----------------------------------------------------------------------------------------------+
 
 ## Work Experience
 
--   Pirelli, Graduation Project Intern, Turkey
-    
-    *November 2023 - ongoing*
-
--   Polat Makina, OPEX Intern, Turkey,
-
-    *July 2023 - August 2023*
++:---------------------------------------------------:+------------------------------------------------------------------------------------------------------+
+| ![](images/tübitak-logo-01.png){width="63"}         | -   TÜBİTAK, Research Intern, Turkey                                                                 |
+|                                                     |                                                                                                      |
+|                                                     |     *February 2024 - Ongoing*                                                                        |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| ![](images/pirelli-lg-01.png){width="105"}          | -   Pirelli, Graduation Project Intern, Turkey                                                       |
+|                                                     |                                                                                                      |
+|                                                     |     *November 2023 - June 2024*                                                                      |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| ![](images/Polat-Makina-logo-2-01.png){width="105"} | -   Polat Makina, OPEX Intern, Turkey,                                                               |
+|                                                     |                                                                                                      |
+|                                                     |     *July 2023 - August 2023*                                                                        |
++-----------------------------------------------------+------------------------------------------------------------------------------------------------------+
 
 ## Competencies
 
-Python, R, Quarto, Git, MATLAB, Minitab, Arena, MS Office
++:-----------------------+:-------+-------+--------+-------+---------+-------+-----------+
+| Mathematical modelling | Python | R     | Gurobi | CPLEX | Minitab | MySQL | MS Office |
++------------------------+--------+-------+--------+-------+---------+-------+-----------+
 
 ## Hobbies
 
@@ -29,4 +39,8 @@ Python, R, Quarto, Git, MATLAB, Minitab, Arena, MS Office
 
 -   Mobile Photography [\*](https://drive.google.com/drive/folders/1mgiwj-f3Kh_gM6yXIzYQHyvy2BRDNsJ0?usp=sharing)
 
-## [CV](https://drive.google.com/file/d/1eDbVyHhzsddhNlk42ckuGFwJLlOnTmpv/view?usp=sharing)
+## 
+
+[![](images/CV_logo.gif){fig-align="left" width="146"}](https://drive.google.com/file/d/1Yb5QvkWK5g1Qg5Ud1xE23mbnCJdUzr-1/view)
+
+[**Get my CV!**](https://drive.google.com/file/d/1Yb5QvkWK5g1Qg5Ud1xE23mbnCJdUzr-1/view)

@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./msc.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -91,10 +92,41 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About Me</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" rel="" target="" aria-current="page">
- <span class="menu-text">My Posts</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-my-posts" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">My Posts</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-my-posts">    
+        <li>
+    <a class="dropdown-item" href="./posts.html" rel="" target="">
+ <span class="dropdown-text">POSTS</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./msc.html" rel="" target="">
+ <span class="dropdown-text">?Set Covering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vrp.html" rel="" target="">
+ <span class="dropdown-text">Vehicle Routing Problem</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./tsp.html" rel="" target="">
+ <span class="dropdown-text">Traveling Salesman Problem</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./blending.html" rel="" target="">
+ <span class="dropdown-text">Oil Blending</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./allocation.html" rel="" target="">
+ <span class="dropdown-text">Allocation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./linsep.html" rel="" target="">
+ <span class="dropdown-text">Linear Separator</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-emu430-coursework" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">EMU430 Coursework</span>
@@ -119,11 +151,75 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./posts.html">My Blog</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">My Blog</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./msc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">?Set Covering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vrp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vehicle Routing Problem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Traveling Salesman Problem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./blending.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Oil Blending</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./allocation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Allocation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linsep.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Separator</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
     
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
@@ -150,7 +246,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This page is under construction.</p>
+<p><img src="images/optim-tsp-01.gif" class="img-fluid"></p>
+<p>This page is under <em>construction.</em></p>
 
 
 
@@ -503,6 +600,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./msc.html" class="pagination-link">
+        <span class="nav-page-text">?Set Covering</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

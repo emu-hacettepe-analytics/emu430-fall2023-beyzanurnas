@@ -1,10 +1,28 @@
 ---
-title: "Welcome to Beyzanur's Analytics Lab"
+title: "Welcome to Beyzanur Nas's Analytics Lab"
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/beyzanurnas
+    - icon: github
+      text: beyzanurnas
+      href: https://github.com/emu-hacettepe-analytics/emu430-fall2023-beyzanurnas
+    - icon: github
+      text: data_vizards
+      href: https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-data_vizards
 sidebar: false
 ---
 
-Hello, I am glad you are here!
+::: {style="text-align: center; font-size: 1em;"}
+Hello,
+
+I am glad you are here!
 
 My name is Beyzanur Nas and this is my personal webpage.
 
 Please stay tuned to follow my works on data analytics, blog posts, and more.
+:::
+
+![](images/bn-e.jpg){fig-align="center" width="250"}
