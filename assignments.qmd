@@ -1,8 +1,10 @@
 ---
 title: "My Assignments"
+sidebar: false
 ---
 
-On this page, I showcase the assignment I conducted for the Fall 2023 EMU 430 Data Analytics course.
+On this page, I showcase the assignments I conducted for the Fall 2023 EMU 430 Data Analytics course.
 
-Please use left menu to navigate through my assignments.
+[A1](assignments/assignment-1.qmd)
 
+[A2](assignments/assignment-2.qmd)

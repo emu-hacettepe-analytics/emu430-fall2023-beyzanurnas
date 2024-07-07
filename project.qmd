@@ -1,6 +1,6 @@
 ---
 title: "Our Course Project"
-sidebar: 
+sidebar: false
 ---
 
 I'm honored to be a member of the *Data**Viz**ards* project team.
@@ -10,3 +10,5 @@ Below, you'll find a brief summary of our project. To access a detailed project 
 **Summary**
 
 In scope of our project, we are conducting a data analytics study on Turkiye's internal migration data. Our dataset contains data on internal migration across cities, age groups and genders of migrants, migration due to different reasons and other relevant data. We are planning to look for relationships of different parts of data. And finally we want to conclude our work by understanding migration trends in Turkiye.
+
+***The data's journey: Migration, where lines of code traverse the landscapes of analytics.***

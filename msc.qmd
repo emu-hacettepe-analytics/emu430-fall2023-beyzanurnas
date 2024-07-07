@@ -19,20 +19,23 @@ $$
 &y_{j}: 1, \text{if a facility is opened at location j} \\
 &x_{ij} : 1, \text{if node i is served by facility at j} \\
 \end{align}
-\end{split} 
+\end{split} \\
+\\
 $$
 
 $$
 \begin{split} 
 \begin{align}
-&\text{minimize} \sum_{j \epsilon N} y_{j} \\
+&\text{minimize} \ \sum_{j \in N} y_{j} \\
 &\text{st} \\ 
-&\sum_{j \epsilon N} x_{ij} = 1 \qquad \qquad \qquad\ \ \forall  i \epsilon N \\
-&y_{j} \ge x_{ij} \qquad \qquad \qquad \qquad \forall  i \epsilon N, j \epsilon N \\
-&\sum_{j \epsilon N} x_{ij}d_{ij} \le Dmax \qquad \quad\ \forall  i \epsilon N\\
-& x_{ij}, y_{j} \; \epsilon \; \{0,1\} \qquad \qquad \qquad \forall i \epsilon N, j \epsilon N \\
+&\\
+&\sum_{j \in N} x_{ij} = 1 \qquad \qquad \qquad\ \ \forall  i \in N \\
+&y_{j} \ge x_{ij} \qquad \qquad \qquad \qquad \forall  i \epsilon N, \forall j \in N \\
+&\sum_{j \in N} x_{ij}d_{ij} \le Dmax \qquad \quad\ \forall  i \in N\\
+& x_{ij}, y_{j} \ \in \ \{0,1\} \qquad \qquad \quad \forall i \in N, \forall j \in N \\
 \end{align}
-\end{split}
+\end{split} \\
+\\
 $$
 
 ```{python}
@@ -50,7 +53,7 @@ d = cdist(nLocs, nLocs)
 Dmax = 100
 
 for i in range(N):
-    plt.scatter(nLocs[i][0], nLocs[i][1], color = 'black', s = 2)
+    plt.scatter(nLocs[i][0], nLocs[i][1], color = 'red', s = 2)
 ```
 
 ```{python}

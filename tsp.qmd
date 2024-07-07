@@ -1,7 +1,93 @@
 ---
 title: "Traveling Salesman Problem"
-format: html
-editor: visual
+execute:
+  eval: true
+sidebar: false
 ---
 
-more to come...
+## Problem
+
+$$
+\begin{split}
+\begin{align}
+&d_{ij}: \text{distance between points i and j} \\
+&x_{ij}: \text{Equal to 1, if a link is on the path; 0, o.w. } \\
+&u_{i}\ : \text{the order node i is visted}\\
+\end{align}
+\end{split}
+$$
+
+$$
+\begin{split}
+\begin{align}
+&\text{minimize} \sum_{i = 1}^{N} \sum_{j = 1, \\ j \neq i}^{N} x_{ij}d_{ij} \\
+&\text{st} \\
+\\
+&\bullet \quad \sum_{j = 1}^{N} x_{ij} = 1 \qquad \qquad \forall i = 1...N \\
+&\bullet \quad \sum_{i = 1}^{N} x_{ji} = 1 \qquad \qquad \forall j = 1...N \\
+&\bullet \quad  u_{i} - u_{j} + (N-1)x_{ij} + (N-3)x_{ji} \ \le \ N-2 \qquad {\forall i,j = 1...N,\ j \neq 0,\ i \neq j}
+\end{align}
+\end{split}
+$$
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
+import numpy as np
+import gurobipy as grb
+
+nodes = pd.read_excel('NodeLocations.xlsx',sheet_name='u159')
+N=len(nodes)
+nLocs = nodes.to_numpy()
+for i in range(N):
+  plt.scatter(nLocs[i,0], nLocs[i,1], color = 'black')
+```
+
+```{python}
+d=np.zeros((N,N)) #distance d_ij matrix
+
+for i in range(N):
+    for j in range(i+1,N):
+        d[i][j]=math.sqrt((nLocs[i][0]-nLocs[j][0])**2+(nLocs[i][1]-nLocs[j][1])**2)
+        d[j][i] = d[i][j]
+        
+#model
+model = grb.Model('TSP')
+
+#dvar
+x = model.addVars(N,N,vtype=grb.GRB.BINARY, name ='x')
+u = model.addVars(N, vtype=grb.GRB.INTEGER, lb=1, ub=N-1,name='u')
+
+#obj
+objective = grb.quicksum(x[i,j]*d[i,j] for i in range(N) for j in range(N))
+model.setObjective(objective,grb.GRB.MINIMIZE)
+
+#constr
+for i in range(N): #out
+    model.addConstr(grb.quicksum(x[i,j] for j in range(N) if j!=i)==1)
+
+for j in range(N): #in
+    model.addConstr(grb.quicksum(x[i,j] for i in range(N) if j!=i)==1)
+
+for i in range(1,N): #0 starting node
+    for j in range(1,N):
+        if i!=j:
+            model.addConstr(u[i]-u[j]+(N-1)*x[i,j] + (N-3)*x[j,i]<=N-2) #subtour
+            
+model.setParam('TimeLimit',240)
+#model.write('TSP.lp')
+model.optimize()
+```
+
+```{python}
+for i in range(N):
+  plt.scatter(nLocs[i,0], nLocs[i,1], color = 'black')
+  
+for i in range(N):
+  for j in range(N):
+    if i!=j:
+      if x[i,j].x > 0.9: 
+        plt.plot([nLocs[i,0],nLocs[j,0]],[nLocs[i,1],nLocs[j,1]],color='red')
+    
+```

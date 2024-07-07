@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./blending.html" rel="next">
+<link href="./msc.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,24 +103,24 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">POSTS</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./msc.html" rel="" target="">
- <span class="dropdown-text">Set Covering</span></a>
+    <a class="dropdown-item" href="./allocation.html" rel="" target="">
+ <span class="dropdown-text">Forest Allocation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Vehicle Routing Problem.qmd" rel="" target="">
- <span class="dropdown-text">Vehicle Routing Problem</span></a>
+    <a class="dropdown-item" href="./msc.html" rel="" target="">
+ <span class="dropdown-text">?Set Covering</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./tsp.html" rel="" target="">
  <span class="dropdown-text">Traveling Salesman Problem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./blending.html" rel="" target="">
- <span class="dropdown-text">Oil Blending</span></a>
+    <a class="dropdown-item" href="./vrp.html" rel="" target="">
+ <span class="dropdown-text">Vehicle Routing Problem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./allocation.html" rel="" target="">
- <span class="dropdown-text">Allocation</span></a>
+    <a class="dropdown-item" href="./blending.html" rel="" target="">
+ <span class="dropdown-text">Oil Blending</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./linsep.html" rel="" target="">
@@ -144,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <div class="quarto-navbar-tools ms-auto tools-wide">
     <a href="https://github.com/beyzanurnas" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://tr.linkedin.com/in/beyzanur-nas-ba2955232" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://tr.linkedin.com/in/beyzanurnas" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
@@ -155,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Vehicle Routing Problem</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vrp.html">Vehicle Routing Problem</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -183,13 +185,40 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./msc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Set Covering</span></a>
+  <a href="./allocation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forest Allocation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
- <span class="menu-text">cvx.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./tsp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Traveling Salesman Problem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./msc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">?Set Covering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vrp.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Vehicle Routing Problem</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./blending.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Oil Blending</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linsep.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Separator</span></a>
+  </div>
+</li>
     </ul>
     </div>
     
@@ -571,6 +600,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./msc.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">?Set Covering</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./blending.html" class="pagination-link">
+        <span class="nav-page-text">Oil Blending</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

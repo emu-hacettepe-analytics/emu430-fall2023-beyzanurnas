@@ -15,16 +15,16 @@ website:
         menu: 
           - text: POSTS
             href: posts.qmd
+          - text: Forest Allocation
+            href: allocation.qmd
           - text: ?Set Covering
             href: msc.qmd
+          - text: Traveling Salesman Problem
+            href: tsp.qmd            
           - text: Vehicle Routing Problem
             href: vrp.qmd
-          - text: Traveling Salesman Problem
-            href: tsp.qmd
           - text: Oil Blending
             href: blending.qmd
-          - text: Allocation
-            href: allocation.qmd
           - text: Linear Separator
             href: linsep.qmd
       - text: "EMU430 Coursework"
@@ -37,10 +37,8 @@ website:
     tools:
       - icon: github
         href: https://github.com/beyzanurnas
-      #- icon: twitter
-      #  href: https://twitter.com
       - icon: linkedin
-        href: https://tr.linkedin.com/in/beyzanur-nas-ba2955232
+        href: https://tr.linkedin.com/in/beyzanurnas
 
 
   sidebar:
@@ -52,11 +50,11 @@ website:
         #- assignments/assignment-1.qmd
         #- assignments/assignment-2.qmd  
         - posts.qmd
+        - allocation.qmd
+        - tsp.qmd
         - msc.qmd
         - vrp.qmd
-        - tsp.qmd
         - blending.qmd
-        - allocation.qmd
         - linsep.qmd
   page-navigation: true
   back-to-top-navigation: true

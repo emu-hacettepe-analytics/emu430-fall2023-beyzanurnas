@@ -1,7 +1,113 @@
 ---
-title: "Allocation"
-format: html
-editor: visual
+title: "Forest Allocation"
+execute:
+  eval: true
+sidebar: false
 ---
 
-more to come...
+## Problem
+
+Wagonho National Forest, 788 thousand acres
+
+7 Analysis areas
+
+3 prescriptions for each area
+
+-   1st prescription: timber
+
+-   2nd prescription: grazing
+
+-   3rd prescription: protecting nature (wilderness)
+
+At least 40 million timber yield
+
+At least 5000 grazing
+
+At least 70 avg. wilderness index
+
+Maximize Net Present Value
+
+```{python}
+#| echo: false
+import pandas as pd
+
+forest_df = pd.read_csv('forest.csv')
+forest_df.head()
+```
+
+$$
+\begin{split}
+\begin{align}
+&I: \text{analysis areas}\\
+&J: \text{prescriptions}\\
+\\
+&x_{ij}: \text{size of allocated area from analysis area i for prescription j} \\
+\\
+&s_{i}\ : \text{size of analysis area i (1/1000)} \\
+&p_{ij}: \text{NPV per acre} \\
+&t_{ij}: \text{predicted timber yield per acre} \\
+&g_{ij}: \text{predicted grazing capacity per acre} \\
+&w_{ij}: \text{wilderness index} \\
+\end{align}
+\end{split}
+$$
+
+$$
+\begin{split} 
+\begin{align}
+&\text{miximize} \ \sum_{i \in I} \sum_{j \in J} x_{ij}p_{ij} \\
+&\text{st} \\ 
+&\\
+& \bullet \sum_{j \in J} x_{ij} = s_{i} \qquad \forall i \in I \\
+& \bullet \sum_{i \in I} \sum_{j \in J} x_{ij}t_{ij} \ge 40000 \\
+& \bullet \sum_{i \in I} \sum_{j \in J} x_{ij}g_{ij} \ge 5 \\
+& \bullet \frac{1}{788} \sum_{i \in I} \sum_{j \in J} x_{ij}w_{ij} \ge 70 \\
+\end{align}
+\end{split}
+$$
+
+```{python}
+import pandas as pd
+import gurobipy as gp
+from gurobipy import GRB
+
+forest_df = pd.read_csv('forest.csv')
+
+I = forest_df['analysis_area'].drop_duplicates().tolist()
+J = forest_df['prescription'].drop_duplicates().tolist()
+
+p = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "npv"] for _ in range(len(forest_df))}
+s = {forest_df.loc[_, 'analysis_area']: forest_df.loc[_, "acres"] for _ in range(len(forest_df))}
+t = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "timber"] for _ in range(len(forest_df))}
+g = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "grazing"] for _ in range(len(forest_df))}
+w = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "wilderness_index"] for _ in range(len(forest_df))}
+```
+
+```{python}
+#model
+model = gp.Model('allocation')
+
+#dvar
+x = model.addVars(I, J, name = "x")
+
+#obj
+model.setObjective(gp.quicksum(x[i,j]*p[i,j] for i in I for j  in J), GRB.MAXIMIZE)
+
+#constr
+for i in I:
+    model.addConstr(gp.quicksum(x[i,j] for j in J) == s[i])
+
+model.addConstr(gp.quicksum(x[i,j]*t[i,j] for i in I for j in J) >= 40000) 
+
+model.addConstr(gp.quicksum(x[i,j]*g[i,j] for i in I for j in J) >= 5)
+
+model.addConstr(1/788*(gp.quicksum(x[i,j]*w[i,j] for i in I for j in J)) >= 70)
+
+model.optimize()
+```
+
+```{python}
+for i in I:
+    for j in J:
+        print("Area", i, "Prescription", j, ":", x[i,j].x, " acres")
+```
