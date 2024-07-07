@@ -76,11 +76,11 @@ forest_df = pd.read_csv('forest.csv')
 I = forest_df['analysis_area'].drop_duplicates().tolist()
 J = forest_df['prescription'].drop_duplicates().tolist()
 
-p = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "npv"] for _ in range(len(forest_df))}
-s = {forest_df.loc[_, 'analysis_area']: forest_df.loc[_, "acres"] for _ in range(len(forest_df))}
-t = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "timber"] for _ in range(len(forest_df))}
-g = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "grazing"] for _ in range(len(forest_df))}
-w = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): forest_df.loc[_, "wilderness_index"] for _ in range(len(forest_df))}
+p = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, 'prescription']): forest_df.loc[_, 'npv'] for _ in range(len(forest_df))}
+s = {forest_df.loc[_, 'analysis_area']: forest_df.loc[_, 'acres'] for _ in range(len(forest_df))}
+t = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, 'prescription']): forest_df.loc[_, 'timber'] for _ in range(len(forest_df))}
+g = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, 'prescription']): forest_df.loc[_, 'grazing'] for _ in range(len(forest_df))}
+w = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, 'prescription']): forest_df.loc[_, 'wilderness_index'] for _ in range(len(forest_df))}
 ```
 
 ```{python}
@@ -88,7 +88,7 @@ w = {(forest_df.loc[_, 'analysis_area'], forest_df.loc[_, "prescription"]): fore
 model = gp.Model('allocation')
 
 #dvar
-x = model.addVars(I, J, name = "x")
+x = model.addVars(I, J, name = 'x')
 
 #obj
 model.setObjective(gp.quicksum(x[i,j]*p[i,j] for i in I for j  in J), GRB.MAXIMIZE)
