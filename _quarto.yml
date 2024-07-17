@@ -17,7 +17,9 @@ website:
             href: posts.qmd
           - text: Forest Allocation
             href: allocation.qmd
-          - text: ?Set Covering
+          - text: Task Scheduling
+            href: scheduling.qmd
+          - text: Set Covering
             href: msc.qmd
           - text: Traveling Salesman Problem
             href: tsp.qmd            
@@ -51,8 +53,9 @@ website:
         #- assignments/assignment-2.qmd  
         - posts.qmd
         - allocation.qmd
-        - tsp.qmd
+        - scheduling.qmd
         - msc.qmd
+        - tsp.qmd
         - vrp.qmd
         - blending.qmd
         - linsep.qmd

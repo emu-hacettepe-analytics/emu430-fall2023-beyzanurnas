@@ -1,0 +1,125 @@
+---
+title: "Task Scheduling"
+execute:
+  eval: true
+sidebar: false
+---
+
+### Problem
+
+An OR scientist has started a project consisting of 7 tasks. Some of the tasks can be done independently of others, but some tasks have predecessors. For example, in order to solve a model with a solver, the model must first be mathematically formulated. For example, if it takes 4 days to formulate the model then the solver step can only be started 4 days after the start of formulation.
+
+The OR scientist has set minimum and maximum durations for completion time of each job and he/she has to determine the *amount* of days to allocate for each. The OR scientist also calculated a cost associated with the completion time of each job. Completing tasks in a shorter period of time is more costly than completing them in a longer period of time. The minimum and maximum time-cost relationship is linear and a cost for any completion time can be calculated.
+
+The OR scientist wants to complete this project in at most 40 days while minimizing the total cost and needs to determine:
+
+1.  When to start each task
+2.  Amount of days to allocate for each task
+
+```{python}
+#| echo: false
+import pandas as pd
+
+tasks_df = pd.read_excel('tasks.xlsx')
+tasks_df
+```
+
+$$
+\begin{split}
+\begin{align}
+&I: tasks \\
+\\
+&s_{i}: \text{starting of task i} \\
+&d_{i}: \text{duration of task i} \\
+\\
+&dmin_{i}: \text{minimum duration for task i} \\
+&dmax_{i}: \text{maximum duration for task i} \\
+&cmin_{i}: \text{minimum cost for task i} \\
+&cmax_{i}: \text{maximum cost for task i} \\
+&c_{i}: \text{cost for task i} \\
+\end{align}
+\end{split}
+$$
+
+$$
+\begin{split} 
+\begin{align} \\ 
+&\text{minimize}\ \sum_{i \in I} c_{i} \\
+&st \\
+\\
+&s_{3}\ \ge\ s_{2}\ +\ d_{2} \\
+&s_{4}\ \ge\ s_{1}\ +\ d_{1} \\
+&s_{4}\ \ge\ s_{2}\ +\ d_{2} \\
+&s_{5}\ \ge\ s_{3}\ +\ d_{3} \\
+&s_{6}\ \ge\ s_{3}\ +\ d_{3} \\
+&s_{7}\ \ge\ s_{4}\ +\ d_{4} \\
+&dmin_{i}\ \le\ d_{i}\ \le\ dmax_{i} \qquad \forall i \in I \\
+&s_{i}\ +\ d_{i}\ \le\ 40 \qquad \forall i \in I\\
+&c_{i} = (\frac{cmin_{i}\ -\ cmax_{i}}{dmax_{i}\ -\ dmin_{i}})(d_{i}\ -\ dmin_{i})\ +\ cmax_{i} \qquad \forall i \in I\\
+\end{align} 
+\end{split}
+$$
+
+```{python}
+import pandas as pd
+import gurobipy as grb
+from gurobipy import GRB
+import matplotlib.pyplot as plt
+
+#read the data into a dataframe
+tasks_df = pd.read_excel('tasks.xlsx')
+
+#task set
+I = tasks_df['task'].to_list()
+
+#parameters
+dmin = {tasks_df.loc[_, 'task']: tasks_df.loc[_, 'min_duration'] for _ in range(len(tasks_df))}
+dmax = {tasks_df.loc[_, 'task']: tasks_df.loc[_, 'max_duration'] for _ in range(len(tasks_df))}
+cmin = {tasks_df.loc[_, 'task']: tasks_df.loc[_, 'min_cost'] for _ in range(len(tasks_df))}
+cmax = {tasks_df.loc[_, 'task']: tasks_df.loc[_, 'max_cost'] for _ in range(len(tasks_df))}
+```
+
+```{python}
+#model
+model = grb.Model('Task Scheduling')
+
+#dvar
+s = model.addVars(I, name = 's')
+d = model.addVars(I, name = 'd')
+
+#obj
+objective = grb.quicksum(cmax[i] + (d[i]-dmin[i])*((cmin[i]-cmax[i])/(dmax[i]-dmin[i])) for i in I) #total cost
+model.setObjective(objective, GRB.MINIMIZE)
+
+#constr
+model.addConstr(s[3] >= s[2] + d[2]) #predecessors
+model.addConstr(s[4] >= s[1] + d[1])
+model.addConstr(s[4] >= s[2] + d[2])
+model.addConstr(s[5] >= s[3] + d[3])
+model.addConstr(s[6] >= s[3] + d[3])
+model.addConstr(s[7] >= s[4] + d[4])
+for i in I:
+    model.addConstr(d[i] >= dmin[i]) #min and max durations 
+    model.addConstr(d[i] <= dmax[i])   
+for i in I:
+    model.addConstr(s[i] + d[i] <= 40) #latest task must be completed before or on day 40
+    
+model.optimize()    
+```
+
+```{python}
+for i in I:
+    print(f"Task {i} starts at day {int(s[i].x)}, duration: {int(d[i].x)} days, ends at day {int(s[i].x + d[i].x)}")
+```
+
+```{python}
+fig, ax = plt.subplots(figsize = (10,4))
+colors = ['tab:red', 'tab:orange', 'tab:olive', 'tab:green', 'tab:cyan', 'tab:blue', 'tab:purple']
+
+for i in I:
+    start = s[i].x
+    duration = d[i].x
+    ax.barh(i, duration, left = start, color = colors[i-1])
+    ax.text(start + duration / 2, i, str(i), ha='center', va='center', color='white')  
+ 
+```

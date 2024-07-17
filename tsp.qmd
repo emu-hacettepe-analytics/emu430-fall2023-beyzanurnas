@@ -11,7 +11,7 @@ $$
 \begin{split}
 \begin{align}
 &d_{ij}: \text{distance between points i and j} \\
-&x_{ij}: \text{Equal to 1, if a link is on the path; 0, o.w. } \\
+&x_{ij}: \text{equal to 1, if a link (i,j) is on the path; 0, o.w. } \\
 &u_{i}\ : \text{the order node i is visted}\\
 \end{align}
 \end{split}
@@ -45,7 +45,7 @@ for i in range(N):
 ```
 
 ```{python}
-d=np.zeros((N,N)) #distance d_ij matrix
+d = np.zeros((N,N))
 
 for i in range(N):
     for j in range(i+1,N):
@@ -73,7 +73,7 @@ for j in range(N): #in
 for i in range(1,N): #0 starting node
     for j in range(1,N):
         if i!=j:
-            model.addConstr(u[i]-u[j]+(N-1)*x[i,j] + (N-3)*x[j,i]<=N-2) #subtour
+            model.addConstr(u[i]-u[j]+(N-1)*x[i,j] + (N-3)*x[j,i] <= N-2) #subtour
             
 model.setParam('TimeLimit',240)
 #model.write('TSP.lp')
@@ -88,6 +88,6 @@ for i in range(N):
   for j in range(N):
     if i!=j:
       if x[i,j].x > 0.9: 
-        plt.plot([nLocs[i,0],nLocs[j,0]],[nLocs[i,1],nLocs[j,1]],color='red')
+        plt.plot([nLocs[i,0],nLocs[j,0]], [nLocs[i,1],nLocs[j,1]], color='red')
     
 ```

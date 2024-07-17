@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beyzanur Nas’s Analytics Lab - ?Set Covering</title>
+<title>Beyzanur Nas’s Analytics Lab - Set Covering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./vrp.html" rel="next">
-<link href="./tsp.html" rel="prev">
+<link href="./tsp.html" rel="next">
+<link href="./scheduling.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -143,8 +143,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Forest Allocation</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./scheduling.html" rel="" target="">
+ <span class="dropdown-text">Task Scheduling</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./msc.html" rel="" target="">
- <span class="dropdown-text">?Set Covering</span></a>
+ <span class="dropdown-text">Set Covering</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./tsp.html" rel="" target="">
@@ -213,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">?Set Covering</h1>
+<h1 class="title">Set Covering</h1>
 </div>
 
 
@@ -272,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Dmax <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    plt.scatter(nLocs[i][<span class="dv">0</span>], nLocs[i][<span class="dv">1</span>], color <span class="op">=</span> <span class="st">'red'</span>, s <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    plt.scatter(nLocs[i,<span class="dv">0</span>], nLocs[i,<span class="dv">1</span>], color <span class="op">=</span> <span class="st">'red'</span>, s <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="msc_files/figure-html/cell-2-output-1.png" width="583" height="411"></p>
 </div>
@@ -322,58 +326,58 @@ Coefficient statistics:
   RHS range        [1e+00, 1e+02]
 Found heuristic solution: objective 576.0000000
 Presolve removed 725159 rows and 724301 columns
-Presolve time: 1.52s
+Presolve time: 2.51s
 Presolved: 14440 rows, 14439 columns, 41453 nonzeros
 Found heuristic solution: objective 454.0000000
 Variable types: 0 continuous, 14439 integer (14439 binary)
 
-Root relaxation: objective 8.057993e+01, 23251 iterations, 1.63 seconds (2.26 work units)
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   17553    8.0253314e+01   4.315775e+02   0.000000e+00      5s
+   23251    8.0579933e+01   0.000000e+00   0.000000e+00      7s
+
+Root relaxation: objective 8.057993e+01, 23251 iterations, 4.01 seconds (2.26 work units)
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
-     0     0   80.57993    0 4043  454.00000   80.57993  82.3%     -    4s
-H    0     0                     309.0000000   80.57993  73.9%     -    4s
-H    0     0                     109.0000000   80.57993  26.1%     -    4s
-H    0     0                     107.0000000   80.57993  24.7%     -    4s
-H    0     0                     105.0000000   80.57993  23.3%     -    4s
-H    0     0                      92.0000000   80.57993  12.4%     -    6s
-     0     0   80.58013    0 4063   92.00000   80.58013  12.4%     -    6s
-H    0     0                      88.0000000   80.58013  8.43%     -    7s
-     0     0   80.58013    0 4089   88.00000   80.58013  8.43%     -    7s
-     0     0   80.75072    0 4061   88.00000   80.75072  8.24%     -   10s
-     0     0   80.75072    0 4083   88.00000   80.75072  8.24%     -   11s
-H    0     0                      87.0000000   80.86783  7.05%     -   16s
-H    0     0                      86.0000000   80.86783  5.97%     -   16s
-H    0     0                      83.0000000   80.86783  2.57%     -   16s
-     0     0   80.86783    0 4206   83.00000   80.86783  2.57%     -   16s
-     0     0   80.86783    0 4379   83.00000   80.86783  2.57%     -   17s
-     0     0   80.87154    0 4227   83.00000   80.87154  2.56%     -   21s
-     0     0   80.94153    0 4228   83.00000   80.94153  2.48%     -   22s
-     0     0   80.94678    0 4240   83.00000   80.94678  2.47%     -   24s
-     0     0   80.94678    0 4101   83.00000   80.94678  2.47%     -   26s
-     0     2   80.94678    0 4101   83.00000   80.94678  2.47%     -   37s
-    11    16   80.94678    3 3853   83.00000   80.94678  2.47%  3246   40s
-    70    37   81.33261    5 3572   83.00000   80.94678  2.47%  1336   45s
-   134    50     cutoff   13        83.00000   80.94678  2.47%  1126   50s
-   194    63   81.08463    5 4462   83.00000   80.94678  2.47%  1054   55s
-   230    81   81.98003   11 3105   83.00000   80.94678  2.47%  1072   60s
-   287   104   81.68862   10 3443   83.00000   81.03924  2.36%  1021   65s
-   357   119   81.52628    7 3946   83.00000   81.14003  2.24%  1014   70s
-   410   136   81.68486   10 2517   83.00000   81.14003  2.24%  1002   75s
-   482   145     cutoff    8        83.00000   81.19711  2.17%   979   80s
-   565   161   81.91891   13 3400   83.00000   81.23751  2.12%   956   86s
-   625   165     cutoff   15        83.00000   81.25853  2.10%   940   90s
-   678   167   81.78677    6 3261   83.00000   81.29284  2.06%   937   95s
-   773   184   81.94918    8 2178   83.00000   81.32038  2.02%   928  105s
-   835   204   81.91303   12 2654   83.00000   81.32847  2.01%   919  111s
-   920   228     cutoff   18        83.00000   81.33521  2.01%   901  117s
-   960   233   81.84801   11 2826   83.00000   81.34008  2.00%   896  120s
+     0     0   80.57993    0 4043  454.00000   80.57993  82.3%     -    9s
+H    0     0                     309.0000000   80.57993  73.9%     -    9s
+H    0     0                     109.0000000   80.57993  26.1%     -    9s
+H    0     0                     107.0000000   80.57993  24.7%     -    9s
+H    0     0                     105.0000000   80.57993  23.3%     -    9s
+H    0     0                      92.0000000   80.57993  12.4%     -   13s
+     0     0   80.58013    0 4063   92.00000   80.58013  12.4%     -   14s
+H    0     0                      88.0000000   80.58013  8.43%     -   14s
+     0     0   80.58013    0 4089   88.00000   80.58013  8.43%     -   14s
+     0     0   80.75072    0 4061   88.00000   80.75072  8.24%     -   22s
+     0     0   80.75072    0 4083   88.00000   80.75072  8.24%     -   22s
+H    0     0                      87.0000000   80.86783  7.05%     -   32s
+H    0     0                      86.0000000   80.86783  5.97%     -   32s
+H    0     0                      83.0000000   80.86783  2.57%     -   32s
+     0     0   80.86783    0 4206   83.00000   80.86783  2.57%     -   32s
+     0     0   80.86783    0 4379   83.00000   80.86783  2.57%     -   33s
+     0     0   80.87154    0 4227   83.00000   80.87154  2.56%     -   41s
+     0     0   80.94153    0 4228   83.00000   80.94153  2.48%     -   41s
+     0     0   80.94678    0 4240   83.00000   80.94678  2.47%     -   45s
+     0     0   80.94678    0 4101   83.00000   80.94678  2.47%     -   47s
+     0     2   80.94678    0 4101   83.00000   80.94678  2.47%     -   71s
+     3     8   80.94678    2 4429   83.00000   80.94678  2.47%  6190   75s
+    19    24   81.15542    5 3652   83.00000   80.94678  2.47%  2801   80s
+    60    33   81.28425    4 3404   83.00000   80.94678  2.47%  1419   86s
+    83    50   81.53238    5 3165   83.00000   80.94678  2.47%  1346   90s
+   134    50     cutoff   13        83.00000   80.94678  2.47%  1126   96s
+   169    67   81.90021    9 2731   83.00000   80.94678  2.47%  1098  100s
+   205    71   81.13124    6 4331   83.00000   80.94678  2.47%  1057  105s
+   230    81   81.98003   11 3105   83.00000   80.94678  2.47%  1072  110s
+   264    88   81.32847    6 3915   83.00000   81.03924  2.36%  1028  115s
+   302   103     cutoff   11        83.00000   81.03924  2.36%  1020  120s
 
 Cutting planes:
   Zero half: 14
 
-Explored 1008 nodes (966919 simplex iterations) in 120.16 seconds (161.19 work units)
+Explored 303 nodes (385526 simplex iterations) in 120.17 seconds (82.00 work units)
 Thread count was 8 (of 8 available processors)
 
 Solution count 10: 83 86 87 ... 454
@@ -384,15 +388,14 @@ Best objective 8.300000000000e+01, best bound 8.200000000000e+01, gap 1.2048%</c
 </div>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.gca()</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y[i].x <span class="op">&gt;</span> <span class="fl">0.9</span>:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        ax.scatter(nLocs[i][<span class="dv">0</span>], nLocs[i][<span class="dv">1</span>], color <span class="op">=</span> <span class="st">'black'</span>, s <span class="op">=</span> <span class="dv">2</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        circle <span class="op">=</span> plt.Circle([nLocs[i][<span class="dv">0</span>], nLocs[i][<span class="dv">1</span>]], Dmax, color <span class="op">=</span> <span class="st">'blue'</span>, fill <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        ax.add_artist(circle)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        ax.scatter(nLocs[i][<span class="dv">0</span>], nLocs[i][<span class="dv">1</span>], color <span class="op">=</span> <span class="st">'red'</span>, s <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y[i].x <span class="op">&gt;</span> <span class="fl">0.9</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        ax.scatter(nLocs[i,<span class="dv">0</span>], nLocs[i,<span class="dv">1</span>], color <span class="op">=</span> <span class="st">'black'</span>, s <span class="op">=</span> <span class="dv">2</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        circle <span class="op">=</span> plt.Circle([nLocs[i,<span class="dv">0</span>], nLocs[i,<span class="dv">1</span>]], Dmax, color <span class="op">=</span> <span class="st">'blue'</span>, fill <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        ax.add_artist(circle)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        ax.scatter(nLocs[i,<span class="dv">0</span>], nLocs[i,<span class="dv">1</span>], color <span class="op">=</span> <span class="st">'red'</span>, s <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="msc_files/figure-html/cell-4-output-1.png" width="807" height="736"></p>
 </div>
@@ -753,13 +756,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tsp.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Traveling Salesman Problem</span>
+      <a href="./scheduling.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Task Scheduling</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./vrp.html" class="pagination-link">
-        <span class="nav-page-text">Vehicle Routing Problem</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tsp.html" class="pagination-link">
+        <span class="nav-page-text">Traveling Salesman Problem</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

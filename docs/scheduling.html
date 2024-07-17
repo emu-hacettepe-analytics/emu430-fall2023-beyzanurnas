@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beyzanur Nas’s Analytics Lab - Welcome to Beyzanur Nas’s Analytics Lab</title>
+<title>Beyzanur Nas’s Analytics Lab - Task Scheduling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -33,6 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -60,12 +95,17 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="docked nav-fixed fullcontent">
+<body class="docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -158,51 +198,266 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to Beyzanur Nas’s Analytics Lab</h1>
+<h1 class="title">Task Scheduling</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
-<div style="text-align: center; font-size: 1em;">
-<p>Hello,</p>
-<p>I am glad you are here!</p>
-<p>My name is Beyzanur Nas and this is my personal webpage.</p>
-<p>Please stay tuned to follow my works on data analytics, blog posts, and more.</p>
+  
+
+</header>
+
+<section id="problem" class="level3">
+<h3 class="anchored" data-anchor-id="problem">Problem</h3>
+<p>An OR scientist has started a project consisting of 7 tasks. Some of the tasks can be done independently of others, but some tasks have predecessors. For example, in order to solve a model with a solver, the model must first be mathematically formulated. For example, if it takes 4 days to formulate the model then the solver step can only be started 4 days after the start of formulation.</p>
+<p>The OR scientist has set minimum and maximum durations for completion time of each job and he/she has to determine the <em>amount</em> of days to allocate for each. The OR scientist also calculated a cost associated with the completion time of each job. Completing tasks in a shorter period of time is more costly than completing them in a longer period of time. The minimum and maximum time-cost relationship is linear and a cost for any completion time can be calculated.</p>
+<p>The OR scientist wants to complete this project in at most 40 days while minimizing the total cost and needs to determine:</p>
+<ol type="1">
+<li>When to start each task</li>
+<li>Amount of days to allocate for each task</li>
+</ol>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">task</th>
+<th data-quarto-table-cell-role="th">min_duration</th>
+<th data-quarto-table-cell-role="th">max_duration</th>
+<th data-quarto-table-cell-role="th">min_cost</th>
+<th data-quarto-table-cell-role="th">max_cost</th>
+<th data-quarto-table-cell-role="th">predecesor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>6</td>
+<td>12</td>
+<td>1600</td>
+<td>1000</td>
+<td>none</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>8</td>
+<td>16</td>
+<td>2400</td>
+<td>1800</td>
+<td>none</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>16</td>
+<td>24</td>
+<td>2900</td>
+<td>2000</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>14</td>
+<td>20</td>
+<td>1900</td>
+<td>1300</td>
+<td>1, 2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>4</td>
+<td>16</td>
+<td>3800</td>
+<td>2000</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>6</td>
+<td>12</td>
+<td>16</td>
+<td>2900</td>
+<td>2200</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>7</td>
+<td>2</td>
+<td>12</td>
+<td>1300</td>
+<td>800</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/bn-e.jpg" class="img-fluid figure-img" width="250"></p>
-</figure>
+</div>
+</div>
+<p><span class="math display">\[
+\begin{split}
+\begin{align}
+&amp;I: tasks \\
+\\
+&amp;s_{i}: \text{starting of task i} \\
+&amp;d_{i}: \text{duration of task i} \\
+\\
+&amp;dmin_{i}: \text{minimum duration for task i} \\
+&amp;dmax_{i}: \text{maximum duration for task i} \\
+&amp;cmin_{i}: \text{minimum cost for task i} \\
+&amp;cmax_{i}: \text{maximum cost for task i} \\
+&amp;c_{i}: \text{cost for task i} \\
+\end{align}
+\end{split}
+\]</span></p>
+<p><span class="math display">\[
+\begin{split}
+\begin{align} \\
+&amp;\text{minimize}\ \sum_{i \in I} c_{i} \\
+&amp;st \\
+\\
+&amp;s_{3}\ \ge\ s_{2}\ +\ d_{2} \\
+&amp;s_{4}\ \ge\ s_{1}\ +\ d_{1} \\
+&amp;s_{4}\ \ge\ s_{2}\ +\ d_{2} \\
+&amp;s_{5}\ \ge\ s_{3}\ +\ d_{3} \\
+&amp;s_{6}\ \ge\ s_{3}\ +\ d_{3} \\
+&amp;s_{7}\ \ge\ s_{4}\ +\ d_{4} \\
+&amp;dmin_{i}\ \le\ d_{i}\ \le\ dmax_{i} \qquad \forall i \in I \\
+&amp;s_{i}\ +\ d_{i}\ \le\ 40 \qquad \forall i \in I\\
+&amp;c_{i} = (\frac{cmin_{i}\ -\ cmax_{i}}{dmax_{i}\ -\ dmin_{i}})(d_{i}\ -\ dmin_{i})\ +\ cmax_{i} \qquad \forall i \in I\\
+\end{align}
+\end{split}
+\]</span></p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gurobipy <span class="im">as</span> grb</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gurobipy <span class="im">import</span> GRB</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#read the data into a dataframe</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tasks_df <span class="op">=</span> pd.read_excel(<span class="st">'tasks.xlsx'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#task set</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> tasks_df[<span class="st">'task'</span>].to_list()</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#parameters</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>dmin <span class="op">=</span> {tasks_df.loc[_, <span class="st">'task'</span>]: tasks_df.loc[_, <span class="st">'min_duration'</span>] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tasks_df))}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>dmax <span class="op">=</span> {tasks_df.loc[_, <span class="st">'task'</span>]: tasks_df.loc[_, <span class="st">'max_duration'</span>] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tasks_df))}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>cmin <span class="op">=</span> {tasks_df.loc[_, <span class="st">'task'</span>]: tasks_df.loc[_, <span class="st">'min_cost'</span>] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tasks_df))}</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>cmax <span class="op">=</span> {tasks_df.loc[_, <span class="st">'task'</span>]: tasks_df.loc[_, <span class="st">'max_cost'</span>] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tasks_df))}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#model</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> grb.Model(<span class="st">'Task Scheduling'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#dvar</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> model.addVars(I, name <span class="op">=</span> <span class="st">'s'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> model.addVars(I, name <span class="op">=</span> <span class="st">'d'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#obj</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>objective <span class="op">=</span> grb.quicksum(cmax[i] <span class="op">+</span> (d[i]<span class="op">-</span>dmin[i])<span class="op">*</span>((cmin[i]<span class="op">-</span>cmax[i])<span class="op">/</span>(dmax[i]<span class="op">-</span>dmin[i])) <span class="cf">for</span> i <span class="kw">in</span> I) <span class="co">#total cost</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>model.setObjective(objective, GRB.MINIMIZE)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#constr</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>model.addConstr(s[<span class="dv">3</span>] <span class="op">&gt;=</span> s[<span class="dv">2</span>] <span class="op">+</span> d[<span class="dv">2</span>]) <span class="co">#predecessors</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>model.addConstr(s[<span class="dv">4</span>] <span class="op">&gt;=</span> s[<span class="dv">1</span>] <span class="op">+</span> d[<span class="dv">1</span>])</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>model.addConstr(s[<span class="dv">4</span>] <span class="op">&gt;=</span> s[<span class="dv">2</span>] <span class="op">+</span> d[<span class="dv">2</span>])</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>model.addConstr(s[<span class="dv">5</span>] <span class="op">&gt;=</span> s[<span class="dv">3</span>] <span class="op">+</span> d[<span class="dv">3</span>])</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>model.addConstr(s[<span class="dv">6</span>] <span class="op">&gt;=</span> s[<span class="dv">3</span>] <span class="op">+</span> d[<span class="dv">3</span>])</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>model.addConstr(s[<span class="dv">7</span>] <span class="op">&gt;=</span> s[<span class="dv">4</span>] <span class="op">+</span> d[<span class="dv">4</span>])</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> I:</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    model.addConstr(d[i] <span class="op">&gt;=</span> dmin[i]) <span class="co">#min and max durations </span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    model.addConstr(d[i] <span class="op">&lt;=</span> dmax[i])   </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> I:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    model.addConstr(s[i] <span class="op">+</span> d[i] <span class="op">&lt;=</span> <span class="dv">40</span>) <span class="co">#latest task must be completed before or on day 40</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>model.optimize()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gurobi Optimizer version 10.0.3 build v10.0.3rc0 (win64)
+
+CPU model: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 27 rows, 14 columns and 46 nonzeros
+Model fingerprint: 0x0e238fe0
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [5e+01, 2e+02]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve removed 27 rows and 14 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    1.1100000e+04   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.01 seconds (0.00 work units)
+Optimal objective  1.110000000e+04</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> I:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Task </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> starts at day </span><span class="sc">{</span><span class="bu">int</span>(s[i].x)<span class="sc">}</span><span class="ss">, duration: </span><span class="sc">{</span><span class="bu">int</span>(d[i].x)<span class="sc">}</span><span class="ss"> days, ends at day </span><span class="sc">{</span><span class="bu">int</span>(s[i].x <span class="op">+</span> d[i].x)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Task 1 starts at day 0, duration: 6 days, ends at day 6
+Task 2 starts at day 0, duration: 8 days, ends at day 8
+Task 3 starts at day 8, duration: 16 days, ends at day 24
+Task 4 starts at day 8, duration: 14 days, ends at day 22
+Task 5 starts at day 24, duration: 4 days, ends at day 28
+Task 6 starts at day 24, duration: 12 days, ends at day 36
+Task 7 starts at day 22, duration: 2 days, ends at day 24</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'tab:red'</span>, <span class="st">'tab:orange'</span>, <span class="st">'tab:olive'</span>, <span class="st">'tab:green'</span>, <span class="st">'tab:cyan'</span>, <span class="st">'tab:blue'</span>, <span class="st">'tab:purple'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> I:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> s[i].x</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    duration <span class="op">=</span> d[i].x</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    ax.barh(i, duration, left <span class="op">=</span> start, color <span class="op">=</span> colors[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    ax.text(start <span class="op">+</span> duration <span class="op">/</span> <span class="dv">2</span>, i, <span class="bu">str</span>(i), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'white'</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="scheduling_files/figure-html/cell-6-output-1.png" width="781" height="337"></p>
+</div>
 </div>
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://linkedin.com/in/beyzanurnas" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-beyzanurnas" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">beyzanurnas</span>
-  </a>
-  <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-data_vizards" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">data_vizards</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -338,6 +593,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

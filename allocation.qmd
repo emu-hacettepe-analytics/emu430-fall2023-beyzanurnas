@@ -9,7 +9,7 @@ sidebar: false
 
 Wagonho National Forest, 788 thousand acres
 
-7 Analysis areas
+7 analysis areas
 
 3 prescriptions for each area
 
@@ -55,7 +55,7 @@ $$
 $$
 \begin{split} 
 \begin{align}
-&\text{miximize} \ \sum_{i \in I} \sum_{j \in J} x_{ij}p_{ij} \\
+&\text{maximize} \ \sum_{i \in I} \sum_{j \in J} x_{ij}p_{ij} \\
 &\text{st} \\ 
 &\\
 & \bullet \sum_{j \in J} x_{ij} = s_{i} \qquad \forall i \in I \\
@@ -70,6 +70,7 @@ $$
 import pandas as pd
 import gurobipy as gp
 from gurobipy import GRB
+import matplotlib.pyplot as plt
 
 forest_df = pd.read_csv('forest.csv')
 
@@ -110,4 +111,17 @@ model.optimize()
 for i in I:
     for j in J:
         print("Area", i, "Prescription", j, ":", x[i,j].x, " acres")
+```
+
+```{python}
+fig,ax = plt.subplots(figsize = (6,4))
+colors = ['tab:red', 'tab:blue', 'tab:green']
+
+for i in I:
+    for j in J:
+        ax.bar(i, x[i,j].x, color = colors[j-1])
+
+ax.set_xlabel('Analysis Area')
+ax.set_ylabel('Acres')    
+ax.legend(['Timbering', 'Grazing', 'Wilderness'], fontsize = 8)
 ```

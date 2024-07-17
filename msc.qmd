@@ -1,5 +1,5 @@
 ---
-title: "?Set Covering"
+title: "Set Covering"
 execute:
   eval: true
 sidebar: false
@@ -53,7 +53,7 @@ d = cdist(nLocs, nLocs)
 Dmax = 100
 
 for i in range(N):
-    plt.scatter(nLocs[i][0], nLocs[i][1], color = 'red', s = 2)
+    plt.scatter(nLocs[i,0], nLocs[i,1], color = 'red', s = 2)
 ```
 
 ```{python}
@@ -87,14 +87,13 @@ model.optimize()
 ```{python}
 
 fig,ax = plt.subplots(figsize=(10,10))
-ax = plt.gca()
 ax.set_aspect('equal')
 for i in range(N):
     if y[i].x > 0.9:
-        ax.scatter(nLocs[i][0], nLocs[i][1], color = 'black', s = 2)
-        circle = plt.Circle([nLocs[i][0], nLocs[i][1]], Dmax, color = 'blue', fill = False)
+        ax.scatter(nLocs[i,0], nLocs[i,1], color = 'black', s = 2)
+        circle = plt.Circle([nLocs[i,0], nLocs[i,1]], Dmax, color = 'blue', fill = False)
         ax.add_artist(circle)
     else:
-        ax.scatter(nLocs[i][0], nLocs[i][1], color = 'red', s = 2)
+        ax.scatter(nLocs[i,0], nLocs[i,1], color = 'red', s = 2)
 
 ```

@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./msc.html" rel="next">
-<link href="./allocation.html" rel="prev">
+<link href="./vrp.html" rel="next">
+<link href="./msc.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -143,8 +143,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Forest Allocation</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./scheduling.html" rel="" target="">
+ <span class="dropdown-text">Task Scheduling</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./msc.html" rel="" target="">
- <span class="dropdown-text">?Set Covering</span></a>
+ <span class="dropdown-text">Set Covering</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./tsp.html" rel="" target="">
@@ -231,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 \begin{split}
 \begin{align}
 &amp;d_{ij}: \text{distance between points i and j} \\
-&amp;x_{ij}: \text{Equal to 1, if a link is on the path; 0, o.w. } \\
+&amp;x_{ij}: \text{equal to 1, if a link (i,j) is on the path; 0, o.w. } \\
 &amp;u_{i}\ : \text{the order node i is visted}\\
 \end{align}
 \end{split}
@@ -265,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d<span class="op">=</span>np.zeros((N,N)) <span class="co">#distance d_ij matrix</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> np.zeros((N,N))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>,N):</span>
@@ -293,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N): <span class="co">#0 starting node</span></span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N):</span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i<span class="op">!=</span>j:</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            model.addConstr(u[i]<span class="op">-</span>u[j]<span class="op">+</span>(N<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>x[i,j] <span class="op">+</span> (N<span class="op">-</span><span class="dv">3</span>)<span class="op">*</span>x[j,i]<span class="op">&lt;=</span>N<span class="op">-</span><span class="dv">2</span>) <span class="co">#subtour</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            model.addConstr(u[i]<span class="op">-</span>u[j]<span class="op">+</span>(N<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>x[i,j] <span class="op">+</span> (N<span class="op">-</span><span class="dv">3</span>)<span class="op">*</span>x[j,i] <span class="op">&lt;=</span> N<span class="op">-</span><span class="dv">2</span>) <span class="co">#subtour</span></span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            </span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>model.setParam(<span class="st">'TimeLimit'</span>,<span class="dv">240</span>)</span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#model.write('TSP.lp')</span></span>
@@ -316,7 +320,7 @@ Coefficient statistics:
   Bounds range     [1e+00, 2e+02]
   RHS range        [1e+00, 2e+02]
 Presolve removed 0 rows and 160 columns
-Presolve time: 0.39s
+Presolve time: 0.36s
 Presolved: 25124 rows, 25280 columns, 149468 nonzeros
 Variable types: 0 continuous, 25280 integer (25122 binary)
 Deterministic concurrent LP optimizer: primal and dual simplex
@@ -328,7 +332,7 @@ Solved with dual simplex
 
 Use crossover to convert LP symmetric solution to basic solution...
 
-Root relaxation: objective 4.008077e+04, 682 iterations, 0.25 seconds (0.12 work units)
+Root relaxation: objective 4.008077e+04, 682 iterations, 0.23 seconds (0.12 work units)
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
@@ -336,14 +340,14 @@ Root relaxation: objective 4.008077e+04, 682 iterations, 0.25 seconds (0.12 work
      0     0 40080.7695    0  276          - 40080.7695      -     -    1s
      0     0 40278.5766    0  306          - 40278.5766      -     -    3s
      0     0 40279.2513    0  379          - 40279.2513      -     -    3s
-     0     0 40524.5625    0  483          - 40524.5625      -     -    5s
-     0     0 40524.5625    0  481          - 40524.5625      -     -    5s
+     0     0 40524.5625    0  483          - 40524.5625      -     -    4s
+     0     0 40524.5625    0  481          - 40524.5625      -     -    4s
      0     0 40772.4308    0  462          - 40772.4308      -     -    5s
-     0     0 40772.7649    0  467          - 40772.7649      -     -    6s
-     0     0 40784.1427    0  453          - 40784.1427      -     -    6s
+     0     0 40772.7649    0  467          - 40772.7649      -     -    5s
+     0     0 40784.1427    0  453          - 40784.1427      -     -    5s
      0     0 40784.1427    0  454          - 40784.1427      -     -    6s
 H    0     0                    54353.663135 40784.1427  25.0%     -    6s
-     0     0 40804.0563    0  391 54353.6631 40804.0563  24.9%     -    7s
+     0     0 40804.0563    0  391 54353.6631 40804.0563  24.9%     -    6s
      0     0 40804.0563    0  391 54353.6631 40804.0563  24.9%     -    7s
      0     0 40804.3498    0  475 54353.6631 40804.3498  24.9%     -    7s
 H    0     0                    52083.825715 40804.3498  21.7%     -    9s
@@ -354,88 +358,81 @@ H    0     0                    52083.825715 40804.3498  21.7%     -    9s
      0     0 40806.8385    0  483 52083.8257 40806.8385  21.7%     -   11s
      0     0 40806.9901    0  483 52083.8257 40806.9901  21.7%     -   12s
      0     0 40806.9901    0  483 52083.8257 40806.9901  21.7%     -   12s
-     0     0 40806.9903    0  493 52083.8257 40806.9903  21.7%     -   12s
+     0     0 40806.9903    0  493 52083.8257 40806.9903  21.7%     -   13s
      0     0 40806.9903    0  473 52083.8257 40806.9903  21.7%     -   13s
-     0     2 40806.9903    0  457 52083.8257 40806.9903  21.7%     -   14s
-     7    12 40835.1603    3  321 52083.8257 40824.0168  21.6%  60.7   15s
-H   27    32                    47513.231598 40824.0168  14.1%  33.9   19s
-    40    46 40848.3462    8  424 47513.2316 40824.0168  14.1%  27.3   20s
-H   61    63                    47499.641128 40824.0168  14.1%  25.4   21s
-   174   186 40894.0598   37  278 47499.6411 40824.0168  14.1%  22.1   25s
-   407   436 40926.8979   86  282 47499.6411 40824.0168  14.1%  16.0   30s
-H  440   440                    47413.892410 40824.0168  13.9%  15.5   33s
-H  441   440                    47086.142385 40824.0168  13.3%  15.5   33s
-   579   613 41061.0318  125  213 47086.1424 40824.0168  13.3%  14.3   35s
-H  700   699                    47058.719832 40824.0168  13.2%  14.1   37s
-H  702   699                    46960.012587 40824.0168  13.1%  14.1   37s
-   899   945 41110.6968  197  211 46960.0126 40824.0168  13.1%  13.5   40s
-H 1123  1162                    46877.169874 40824.0168  12.9%  13.1   43s
-  1280  1334 41140.8713  282  240 46877.1699 40824.0168  12.9%  13.2   45s
-H 1338  1338                    46599.820771 40824.0168  12.4%  13.2   47s
-H 1339  1338                    46206.630253 40824.0168  11.6%  13.2   47s
-H 1341  1338                    46201.940801 40824.0168  11.6%  13.2   47s
-H 1355  1353                    45992.415022 40824.0168  11.2%  13.3   49s
-  1357  1405 41148.5828  301  243 45992.4150 40824.0168  11.2%  13.3   50s
-  1690  1761 43108.2364  386  230 45992.4150 40824.0168  11.2%  13.1   55s
-  1926  1959 43125.4452  444  204 45992.4150 40824.0168  11.2%  13.2   60s
-H 1937  1955                    45931.182755 40824.0168  11.1%  13.2   60s
-  1969  1983 43132.6492  455  199 45931.1828 40824.0168  11.1%  13.2   69s
-H 1975  1831                    43500.061113 40824.0168  6.15%  13.2   69s
-H 1997  1648                    43055.399419 40824.0168  5.18%  13.3   73s
-  2003  1757     cutoff  463      43055.3994 40829.2047  5.17%  13.3   75s
-  2276  2081 41173.6304   35  242 43055.3994 40829.9735  5.17%  13.9   80s
-  2651  2464 41230.3966  174  200 43055.3994 40829.9735  5.17%  13.4   85s
-  3017  2805 41312.7356  296  167 43055.3994 40831.3778  5.17%  13.1   92s
-  3250  2806 41621.3605  155  473 43055.3994 40836.3627  5.15%  13.5   97s
-  3253  2808 41464.9418  167  458 43055.3994 40836.3627  5.15%  13.5  106s
-H 3257  2670                    42887.854951 40965.3044  4.48%  13.5  112s
-  3260  2672 41816.2280  383  420 42887.8550 41067.0213  4.25%  13.5  116s
-  3263  2674 42796.3788  164  372 42887.8550 41097.4750  4.17%  13.5  120s
-  3270  2678 41756.0767  132  137 42887.8550 41182.4480  3.98%  13.5  126s
-  3277  2684 41445.7534  106  338 42887.8550 41188.0548  3.96%  14.7  136s
-  3282  2687 41599.1607   82  172 42887.8550 41188.1402  3.96%  14.7  141s
-  3285  2689 41188.6684   62  365 42887.8550 41188.6684  3.96%  14.7  145s
-H 3287  2556                    42804.281483 41189.0691  3.77%  14.7  148s
-  3291  2558 41223.9552  147  359 42804.2815 41201.2100  3.75%  14.6  151s
-  3295  2561 41811.8962   90  318 42804.2815 41227.1509  3.68%  14.6  155s
-  3300  2564 41400.8874   91  307 42804.2815 41236.4169  3.66%  14.6  160s
-  3305  2568 42647.4865  162  308 42804.2815 41236.4169  3.66%  14.6  166s
-  3308  2570 41739.5129  123  259 42804.2815 41267.9117  3.59%  14.6  175s
-  3377  2621 41283.0104   35  184 42804.2815 41267.9117  3.59%  16.6  181s
-  3499  2703 41299.3963   51  134 42804.2815 41267.9117  3.59%  17.3  185s
-  3712  2779 41975.9388   58  382 42804.2815 41267.9117  3.59%  18.5  190s
-  4024  2874 41284.8492   33  241 42804.2815 41267.9117  3.59%  19.7  195s
-  4361  3059 41272.4089   30  267 42804.2815 41267.9117  3.59%  20.4  200s
-  4821  3327 41444.4702   38  211 42804.2815 41267.9117  3.59%  21.0  205s
-  5336  3571 41374.3567   34  184 42804.2815 41267.9117  3.59%  22.1  210s
-  5815  3823 41756.5551  124  194 42804.2815 41267.9117  3.59%  22.8  215s
-H 5948  3636                    42758.828322 41267.9117  3.49%  23.2  218s
-  6094  3786 41922.4507  182  163 42758.8283 41267.9117  3.49%  23.5  221s
-  6669  4018 42071.0154  293  166 42758.8283 41270.8095  3.48%  23.5  225s
-  6847  4061 41701.0060   45  312 42758.8283 41270.8095  3.48%  23.7  231s
-  7201  4185 42255.9342   58  354 42758.8283 41271.9543  3.48%  24.2  235s
-  7894  4428 41867.2142   52  176 42758.8283 41273.2557  3.47%  25.3  240s
+     0     2 40806.9903    0  457 52083.8257 40806.9903  21.7%     -   15s
+H   27    32                    47513.231598 40824.0168  14.1%  33.9   18s
+H   61    63                    47499.641128 40824.0168  14.1%  25.4   19s
+    88    97 40873.0302   18  396 47499.6411 40824.0168  14.1%  23.1   20s
+   288   310 40911.7997   63  288 47499.6411 40824.0168  14.1%  17.2   25s
+H  440   440                    47413.892410 40824.0168  13.9%  15.5   28s
+H  441   440                    47086.142385 40824.0168  13.3%  15.5   28s
+   542   575 40938.7074  119  250 47086.1424 40824.0168  13.3%  14.4   30s
+   699   699 41092.5817  152  286 47086.1424 40824.0168  13.3%  14.1   35s
+H  700   699                    47058.719832 40824.0168  13.2%  14.1   35s
+H  702   699                    46960.012587 40824.0168  13.1%  14.1   35s
+  1114  1162 41132.3808  245  266 46960.0126 40824.0168  13.1%  13.2   40s
+H 1123  1162                    46877.169874 40824.0168  12.9%  13.1   40s
+H 1338  1338                    46599.820771 40824.0168  12.4%  13.2   45s
+H 1339  1338                    46206.630253 40824.0168  11.6%  13.2   45s
+H 1341  1338                    46201.940801 40824.0168  11.6%  13.2   45s
+H 1355  1353                    45992.415022 40824.0168  11.2%  13.3   46s
+  1548  1609 43092.7543  342  242 45992.4150 40824.0168  11.2%  13.2   51s
+  1766  1842 43114.8380  405  216 45992.4150 40824.0168  11.2%  13.1   56s
+  1926  1959 43125.4452  444  204 45992.4150 40824.0168  11.2%  13.2   65s
+H 1937  1955                    45931.182755 40824.0168  11.1%  13.2   65s
+  1969  1983 43132.6492  455  199 45931.1828 40824.0168  11.1%  13.2   79s
+H 1975  1831                    43500.061113 40824.0168  6.15%  13.2   79s
+H 1997  1648                    43055.399419 40824.0168  5.18%  13.3   84s
+  2003  1757     cutoff  463      43055.3994 40829.2047  5.17%  13.3   87s
+  2276  2081 41173.6304   35  242 43055.3994 40829.9735  5.17%  13.9   92s
+  2459  2270 41210.5162   95  279 43055.3994 40829.9735  5.17%  13.7   96s
+  2845  2617 41249.4864  244  218 43055.3994 40829.9735  5.17%  13.1  103s
+  3017  2805 41312.7356  296  167 43055.3994 40831.3778  5.17%  13.1  106s
+  3250  2806 41621.3605  155  473 43055.3994 40836.3627  5.15%  13.5  114s
+  3252  2807 42422.8352  255  276 43055.3994 40836.3627  5.15%  13.5  115s
+  3253  2808 41464.9418  167  458 43055.3994 40836.3627  5.15%  13.5  124s
+  3257  2811 41534.8822  377  481 43055.3994 40836.3627  5.15%  13.5  126s
+H 3257  2670                    42887.854951 40965.3044  4.48%  13.5  131s
+  3260  2672 41816.2280  383  420 42887.8550 41067.0213  4.25%  13.5  137s
+  3263  2674 42796.3788  164  372 42887.8550 41097.4750  4.17%  13.5  141s
+  3267  2676 42024.0277  573  245 42887.8550 41143.7120  4.07%  13.5  145s
+  3271  2679 41784.1361  583  358 42887.8550 41182.4480  3.98%  13.5  150s
+  3277  2684 41445.7534  106  338 42887.8550 41188.0548  3.96%  14.7  161s
+  3282  2687 41599.1607   82  172 42887.8550 41188.1402  3.96%  14.7  167s
+  3284  2689 41856.7953  437  361 42887.8550 41188.1956  3.96%  14.7  170s
+H 3287  2556                    42804.281483 41189.0691  3.77%  14.7  175s
+  3293  2560 41464.2437   63  281 42804.2815 41209.8673  3.72%  14.6  180s
+  3297  2562 41381.7167  187  298 42804.2815 41233.3531  3.67%  14.6  185s
+  3301  2565 41841.1664  700  304 42804.2815 41236.4169  3.66%  14.6  190s
+  3305  2568 42647.4865  162  308 42804.2815 41236.4169  3.66%  14.6  195s
+  3308  2570 41739.5129  123  259 42804.2815 41267.9117  3.59%  14.6  205s
+  3377  2621 41283.0104   35  184 42804.2815 41267.9117  3.59%  16.6  212s
+  3452  2674 41293.7651   45  181 42804.2815 41267.9117  3.59%  17.0  215s
+  3640  2755 41302.0448   51  315 42804.2815 41267.9117  3.59%  18.2  220s
+  3947  2864 42016.0562  104   88 42804.2815 41267.9117  3.59%  19.2  225s
+  4148  2979 41718.6368   68  187 42804.2815 41267.9117  3.59%  20.2  230s
+  4524  3172 41294.9894   48  426 42804.2815 41267.9117  3.59%  20.6  235s
+  5000  3338 41441.2071   43  122 42804.2815 41267.9117  3.59%  21.5  240s
 
 Cutting planes:
-  Gomory: 101
-  Cover: 9
-  Implied bound: 19
-  Projected implied bound: 13
-  MIR: 18
-  StrongCG: 1
-  Flow cover: 80
-  Inf proof: 1
-  Zero half: 9
-  RLT: 7
-  Relax-and-lift: 7
+  Gomory: 99
+  Cover: 1
+  Implied bound: 5
+  Projected implied bound: 6
+  MIR: 12
+  Flow cover: 54
+  Zero half: 7
+  RLT: 1
+  Relax-and-lift: 3
 
-Explored 7976 nodes (204792 simplex iterations) in 240.08 seconds (143.51 work units)
+Explored 5044 nodes (110759 simplex iterations) in 240.08 seconds (122.80 work units)
 Thread count was 8 (of 8 available processors)
 
-Solution count 10: 42758.8 42804.3 42887.9 ... 46599.8
+Solution count 10: 42804.3 42887.9 43055.4 ... 46877.2
 
 Time limit reached
-Best objective 4.275882832229e+04, best bound 4.127325573369e+04, gap 3.4743%</code></pre>
+Best objective 4.280428148328e+04, best bound 4.126791173090e+04, gap 3.5893%</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="3">
@@ -446,7 +443,7 @@ Best objective 4.275882832229e+04, best bound 4.127325573369e+04, gap 3.4743%</c
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(N):</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">!=</span>j:</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> x[i,j].x <span class="op">&gt;</span> <span class="fl">0.9</span>: </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        plt.plot([nLocs[i,<span class="dv">0</span>],nLocs[j,<span class="dv">0</span>]],[nLocs[i,<span class="dv">1</span>],nLocs[j,<span class="dv">1</span>]],color<span class="op">=</span><span class="st">'red'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        plt.plot([nLocs[i,<span class="dv">0</span>],nLocs[j,<span class="dv">0</span>]], [nLocs[i,<span class="dv">1</span>],nLocs[j,<span class="dv">1</span>]], color<span class="op">=</span><span class="st">'red'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="tsp_files/figure-html/cell-4-output-1.png" width="583" height="411"></p>
 </div>
@@ -806,13 +803,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./allocation.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Forest Allocation</span>
+      <a href="./msc.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Set Covering</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./msc.html" class="pagination-link">
-        <span class="nav-page-text">?Set Covering</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vrp.html" class="pagination-link">
+        <span class="nav-page-text">Vehicle Routing Problem</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

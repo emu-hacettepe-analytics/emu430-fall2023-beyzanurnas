@@ -5,6 +5,6 @@ sidebar: false
 
 On this page, I showcase the assignments I conducted for the Fall 2023 EMU 430 Data Analytics course.
 
-[A1](assignments/assignment-1.qmd)
+[Assignment1](assignments/assignment-1.qmd)
 
-[A2](assignments/assignment-2.qmd)
+[Assignment2](assignments/assignment-2.qmd)
